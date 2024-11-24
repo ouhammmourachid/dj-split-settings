@@ -1,0 +1,38 @@
+name: Release mermaid-py package
+
+on:
+  workflow_dispatch:
+    inputs:
+      bump-type:
+        description: 'Bump type'
+        required: true
+        default: 'patch'
+        options:
+          - patch
+          - minor
+          - major
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
+        fetch-depth: 0             # otherwise, you will fail to push refs to dest repo
+    - name: bump version
+      uses: ouhammmourachid/bumpversion-action@v1.1.0
+      with:
+        bump-type: ${{ github.event.inputs.bump-type }}
+        github-token: ${{ secrets.TOKEN_PAT}}
+
+    - name: Build and Deploy to PyPI
+      uses: ./.github/actions/build-deploy
+      with:
+        pypi-token: ${{ secrets.PYPI_API_TOKEN }}
