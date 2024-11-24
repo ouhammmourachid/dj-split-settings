@@ -1,4 +1,4 @@
-name: Release mermaid-py package
+name: Release dj-split-settings to PyPI
 
 on:
   workflow_dispatch:
