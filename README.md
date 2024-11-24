@@ -1,1 +1,2 @@
-# django-split-settings-app
+# django-split-settings
+
