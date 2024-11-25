@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "dj-split-settings"
-version = "0.1.1"
+version = "0.1.2"
 description = ""
 authors = ["ouhammmourachid <rachidouhammou21@gmail.com>"]
 license = "MIT"
@@ -27,7 +27,7 @@ build-backend = "poetry.core.masonry.api"
 
 
 [bumpver]
-current_version = "0.1.1"
+current_version = "0.1.2"
 version_pattern = "MAJOR.MINOR.PATCH"
 
 [bumpver.file_patterns]
